@@ -1,0 +1,33 @@
+---
+slug: xcode-swift-formatter
+title: Xcode에 Swift Formatter 적용하기
+authors: [kukuluku]
+tags: [xcode, swift]
+---
+
+Xcode16에서 Swift 코드를 작성 중 자동으로 동작하는(Format On Save) formatter를 적용해 보았다.
+
+## SwiftFormat 설치
+homebrew를 통해 설치 후 Xcode의 익스텐션으로 사용할 수 있도록 구성해 보았다.
+* [github](https://github.com/nicklockwood/SwiftFormat)
+
+1. homebrew를 통해 swiftformat-for-xcode 설치
+```
+brew install --cask swiftformat-for-xcode
+```
+
+2. 설치 된 swiftformat-for-xcode 를 실행한다.
+<img width="487" alt="image" src="https://github.com/user-attachments/assets/8ba3fb10-53a7-4b32-be82-34c7f3474709" />
+
+3. 설정 > 일반 > 로그인 항목 및 확장 프로그램 > SwiftFormat for Xcode 체크
+<img width="705" alt="image" src="https://github.com/user-attachments/assets/e5cceaab-7a7d-4fbd-8d41-763dffc58ca4" />
+
+4. Xcode에서 저장 시 SwiftFormat > Format File 을 동작하도록 Key Binding 을 수정한다.  
+Xcode > Settings > Key Bindings
+![image](https://github.com/user-attachments/assets/c91a8511-b6a9-4748-8bc7-ef658a3fa377)
+
+## 결론
+이렇게 저장 시 자동으로 Swift formatting을 하도록 적용해 보았다. 추가로 프로젝트에 .swiftformat 파일을 추가하면 해당 프로젝트에 swift convention 설정이 가능하다.
+
+
+

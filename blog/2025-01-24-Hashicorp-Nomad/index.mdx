@@ -1,0 +1,96 @@
+---
+slug: hashicorp-nomad
+title: HashiCorp Nomad Review
+authors: [kukuluku]
+tags: [hashicorp, cloud]
+---
+
+# Nomad?
+HashiCorp의 오픈소스 서비스 스케줄러. 컨테이너 뿐만 아니라 비 컨테이너(바이너리, 배치 등) 워크로드 관리 지원.
+https://www.nomadproject.io/
+
+# How Nomad Works
+<image src="https://github.com/user-attachments/assets/55680f28-f188-4f20-b078-f18311e8502c" width="70%" />
+<image src="https://github.com/user-attachments/assets/f12da6d2-a949-44e8-b0e1-58cd53d88ef8" width="70%" />
+
+* Nomad의 기본 워크로드 단위는 Job 이다.
+* Nomad의 워크로드는 HCL(HashiCorp Configuration Language)로 기술 할 수 있다.
+
+# Key Definitions
+### Job
+  기본 워크로드
+  ```hcl
+  # This declares a job named "docs". There can
+  # be exactly one job declaration per job file
+  job "docs" {
+    ...
+  }
+  ```
+
+### Task Group
+  task의 모음으로, 하나의 동일한 client node에서 실행되는 단위. 여러 task group의 인스턴스는 다른 노드에서 실행 가능
+  ```hcl
+  job "docs" {
+    group "web" {
+      # All tasks in this group will run on 
+      # the same node
+      ...
+    }
+    group "logging" {
+      # These tasks must also run together 
+      # but may be a different node from web
+      ...
+    }
+  }
+  ```
+
+### Task
+  가장 작은 단위의, 기본이 되는 단위
+  ```hcl
+  job "docs" {
+    group "example" {
+      task "server" {
+        # ...
+      }
+    }
+  }
+  ```
+
+### Task Driver
+  작업을 실행하는 기본 수단(e.g. Docker, Java, Qemu..)
+  ```hcl
+  task "server" {
+    driver = "docker"
+    ...
+  }
+  ```
+
+### Resources
+  작업을 수행할 때 필요 사항을 명시하는 것
+  ```hcl
+  job "docs" {
+    group "example" {
+      task "server" {
+        resources {
+          cpu    = 100
+          memory = 256
+
+          network {
+            mbits = 100
+            port "http" {}
+            port "ssh" {
+              static = 22
+            }
+          }
+  
+          device "nvidia/gpu" {
+            count = 2
+          }
+        }
+      }
+    }
+  }
+  ```
+
+# 출처
+https://medium.com/hashicorp-engineering/hashicorp-nomad-from-zero-to-wow-1615345aa539#9cc6

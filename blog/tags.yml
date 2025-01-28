@@ -17,3 +17,29 @@ hola:
   label: Hola
   permalink: /hola
   description: Hola tag description
+
+xcode:
+  label: Xcode
+  permalink: /xcode
+  description: Apple macos IDE
+
+swift:
+  label: swift
+  permalink: /swift
+  description: swift programing language
+
+hashicorp:
+  label: hashicorp
+  permalink: /hashicorp
+  description: The Infrastructure Cloud Company
+
+k8s:
+  label: k8s
+  permalink: /k8s
+  description: Kubernetes
+
+cloud:
+  label: cloud
+  permalink: /cloud
+  description: Cloud development
+
