@@ -26,7 +26,7 @@ const config: Config = {
         highlightSearchTermsOnTargetPage: true, // 검색어 하이라이트
         explicitSearchResultPath: true, // 검색 결과 URL 명확하게 설정
 
-        language: ['en'], 
+        language: ['en', 'ko'], // 검색 언어 설정
       },
     ],
   ],
