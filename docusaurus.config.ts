@@ -15,6 +15,22 @@ const config: Config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
+  plugins: [
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        hashed: true, // 검색 색인을 해시화하여 보안 강화
+        indexDocs: false, // 문서 검색 활성화
+        indexBlog: true, // 블로그 검색 활성화
+        indexPages: true, // 개별 페이지 검색 활성화
+        highlightSearchTermsOnTargetPage: true, // 검색어 하이라이트
+        explicitSearchResultPath: true, // 검색 결과 URL 명확하게 설정
+
+        language: ['en'], 
+      },
+    ],
+  ],
+
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'facebook', // Usually your GitHub org/user name.
